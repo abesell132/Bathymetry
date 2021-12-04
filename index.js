@@ -9,7 +9,7 @@ async function start() {
     let trainingData = { values: [] };
     for (let a = 0; a < 10000; a++) {
       let trainingCoord = await training.get_random_training_data(trainingCoords);
-      let trainingPixelValues = await training.findBasePixelValues(trainingCoord, baseImg);
+      let trainingPixelValues = await training.createTrainingDataPoint(trainingCoord, baseImg);
 
       trainingData.values.push({
         inputs: trainingPixelValues,

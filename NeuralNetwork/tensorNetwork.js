@@ -21,12 +21,12 @@ labelsTensor.dispose();
 let model = tf.sequential();
 const hidden = tf.layers.dense({
   units: 15,
-  inputShape: [3],
+  inputShape: [51],
   activation: "sigmoid",
 });
 
 const output = tf.layers.dense({
-  units: 9,
+  units: 4,
   activation: "softmax",
 });
 model.add(hidden);

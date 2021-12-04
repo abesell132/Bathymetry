@@ -84,7 +84,7 @@ module.exports = {
     }
   },
 
-  findBasePixelValues: function (trainingCoords, baseImg) {
+  createTrainingDataPoint: function (trainingCoords, baseImg) {
     return new Promise((resolve) => {
       let m2m2 = baseImg.getPixelColor(trainingCoords.coords[0] - 2, trainingCoords.coords[1] - 2);
       let zm2 = baseImg.getPixelColor(trainingCoords.coords[0], trainingCoords.coords[1] - 2);
@@ -122,11 +122,61 @@ module.exports = {
       let zp2Color = Jimp.intToRGBA(zp2);
       let p2p2Color = Jimp.intToRGBA(p2p2);
 
-      let basePixelValues = [];
-      basePixelValues.push(m2m2Color.r / 255);
-      basePixelValues.push(m2m2Color.g / 255);
-      basePixelValues.push(m2m2Color.b / 255);
-      basePixelValues.push(zm2Color.r / 255);
+      let trainingDataPoint = {
+        label: trainingCoords.label,
+        m2m2ColorR: m2m2Color.r / 255,
+        m2m2ColorG: m2m2Color.g / 255,
+        m2m2ColorB: m2m2Color.b / 255,
+        zm2ColorR: zm2Color.r / 255,
+        zm2ColorG: zm2Color.g / 255,
+        zm2ColorB: zm2Color.b / 255,
+        p2m2ColorR: p2m2Color.r / 255,
+        p2m2ColorG: p2m2Color.g / 255,
+        p2m2ColorB: p2m2Color.b / 255,
+        m1m1ColorR: m1m1Color.r / 255,
+        m1m1ColorG: m1m1Color.g / 255,
+        m1m1ColorB: m1m1Color.b / 255,
+        zm1ColorR: zm1Color.r / 255,
+        zm1ColorG: zm1Color.g / 255,
+        zm1ColorB: zm1Color.b / 255,
+        p1m1ColorR: p1m1Color.r / 255,
+        p1m1ColorG: p1m1Color.g / 255,
+        p1m1ColorB: p1m1Color.b / 255,
+        m2zColorR: m2zColor.r / 255,
+        m2zColorG: m2zColor.g / 255,
+        m2zColorB: m2zColor.b / 255,
+        m1zColorR: m1zColor.r / 255,
+        m1zColorG: m1zColor.g / 255,
+        m1zColorB: m1zColor.b / 255,
+        zzColorR: zzColor.r / 255,
+        zzColorG: zzColor.g / 255,
+        zzColorB: zzColor.b / 255,
+        p1zColorR: p1zColor.r / 255,
+        p1zColorG: p1zColor.g / 255,
+        p1zColorB: p1zColor.b / 255,
+        p2zColorR: p2zColor.r / 255,
+        p2zColorG: p2zColor.g / 255,
+        p2zColorB: p2zColor.b / 255,
+        m1p1ColorR: m1p1Color.r / 255,
+        m1p1ColorG: m1p1Color.g / 255,
+        m1p1ColorB: m1p1Color.b / 255,
+        zp1ColorR: zp1Color.r / 255,
+        zp1ColorG: zp1Color.g / 255,
+        zp1ColorB: zp1Color.b / 255,
+        p1p1ColorR: p1p1Color.r / 255,
+        p1p1ColorG: p1p1Color.g / 255,
+        p1p1ColorB: p1p1Color.b / 255,
+        m2p2ColorR: m2p2Color.r / 255,
+        m2p2ColorG: m2p2Color.g / 255,
+        m2p2ColorB: m2p2Color.b / 255,
+        zp2ColorR: zp2Color.r / 255,
+        zp2ColorG: zp2Color.g / 255,
+        zp2ColorB: zp2Color.b / 255,
+        p2p2ColorR: p2p2Color.r / 255,
+        p2p2ColorG: p2p2Color.g / 255,
+        p2p2ColorB: p2p2Color.b / 255,
+      };
+
       basePixelValues.push(zm2Color.g / 255);
       basePixelValues.push(zm2Color.b / 255);
       basePixelValues.push(p2m2Color.r / 255);
