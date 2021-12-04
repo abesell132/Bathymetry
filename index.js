@@ -1,5 +1,5 @@
 const training = require("./trainingData/trainingData");
-const fs = require("fs");
+const NeuralNetwork = require("./NeuralNetwork/index");
 
 async function start() {
   try {
@@ -17,9 +17,9 @@ async function start() {
       });
     }
 
-    await fs.writeFile("./trainingData/trainingData.json", JSON.stringify(trainingData), function (err) {
-      if (err) return console.log(err);
-    });
+    let model = await NeuralNetwork.createModel();
+    let cleanTrainingData = await NeuralNetwork.parseTrainingData(trainingData);
+    await NeuralNetwork.trainModel(model, cleanTrainingData);
   } catch (e) {
     console.log(e);
   }
