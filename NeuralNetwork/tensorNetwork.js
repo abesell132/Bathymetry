@@ -8,8 +8,6 @@ let trainingData = JSON.parse(fs.readFileSync("../trainingData/trainingData.json
 let colors = [];
 let labels = [];
 for (let record of trainingData.values) {
-  console.log(record.inputs);
-
   colors.push(record.inputs);
   labels.push(labelList.indexOf(record.outputs));
 }
@@ -48,10 +46,10 @@ let isTraining = false;
 train();
 
 async function train() {
-  if (istraining) {
+  if (isTraining) {
     return;
   }
-  istraining = true;
+  isTraining = true;
   // This is leaking https://github.com/tensorflow/tfjs/issues/457
   await model.fit(xs, ys, {
     shuffle: true,
