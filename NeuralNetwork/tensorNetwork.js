@@ -14,6 +14,7 @@ for (let record of trainingData.values) {
   labels.push(labelList.indexOf(record.outputs));
 }
 
+console.log(colors);
 let xs = tf.tensor2d(colors);
 let labelsTensor = tf.tensor1d(labels, "int32");
 
