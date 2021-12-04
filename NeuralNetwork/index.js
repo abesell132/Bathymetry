@@ -1,5 +1,4 @@
 const tf = require("@tensorflow/tfjs-node-gpu");
-const TensorModel = require("./TensorModel");
 
 let labelList = ["land", "water", "depthLine", "depthNumber"];
 
