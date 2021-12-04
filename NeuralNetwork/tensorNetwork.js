@@ -14,14 +14,11 @@ for (let record of trainingData.values) {
   labels.push(labelList.indexOf(record.outputs));
 }
 
-console.log(colors);
 let xs = tf.tensor2d(colors);
 let labelsTensor = tf.tensor1d(labels, "int32");
 
 let ys = tf.oneHot(labelsTensor, 4).cast("float32");
 labelsTensor.dispose();
-
-model = buildModel();
 
 let model = tf.sequential();
 const hidden = tf.layers.dense({
