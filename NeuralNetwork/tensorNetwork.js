@@ -8,7 +8,7 @@ let trainingData = JSON.parse(fs.readFileSync("../trainingData/trainingData.json
 let colors = [];
 let labels = [];
 for (let record of trainingData.values) {
-  console.log(record.outputs);
+  console.log(record.inputs);
 
   colors.push(record.inputs);
   labels.push(labelList.indexOf(record.outputs));
