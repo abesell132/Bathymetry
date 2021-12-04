@@ -58,10 +58,6 @@ async function train() {
     callbacks: {
       onEpochEnd: (epoch, logs) => {
         console.log(epoch);
-        lossY.push(logs.val_loss.toFixed(2));
-        accY.push(logs.val_acc.toFixed(2));
-        lossX.push(lossX.length + 1);
-        lossP.html("Loss: " + logs.loss.toFixed(5));
       },
       onBatchEnd: async (batch, logs) => {
         await tf.nextFrame();
